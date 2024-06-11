@@ -21,6 +21,24 @@ params = {
 	"ref": "sr_pg_1" # the number in the end increasing + 1
 }
 
+def create_cattegories():
+      
+      for category in CATEGORY_CHOICES:
+            
+            Category(
+				nombre=CATEGORY_CHOICES[category],
+		).save()
+
+def get_category(description: str):
+      
+      for category in CATEGORY_CHOICES:
+            
+            if CATEGORY_CHOICES[category].lower() in description.lower():
+                  
+                  return CATEGORY_CHOICES[category]
+      
+      return CATEGORY_CHOICES['Otros']
+
 
 def generate_url(pages, params: dict):
       
@@ -68,22 +86,27 @@ def populate_furniture(pages: int, BASE_URL: str, URL_ROOT: str):
             
             for product in products:
                   
-                  # Imagen: product.img.get('src')
-                  # Descripcion: product.find('span', {'class': 'a-size-base-plus a-color-base a-text-normal'})
-                  # Valoracion: product.find('span', {'class': 'a-icon-alt'})
-                  # Precio: product.find('span', {'class': 'a-offscreen'})
-                  # Entrega: product.find('span', {'class': 'a-color-base'})
-                  print(f"Imagen: {product.img.get('src')}")
-                  print(f"Descripcion: {product.h2.get_text().strip()}")
-                  print(f"Valoracion: {product.find('span', {'class': 'a-icon-alt'})}")
-                  print(f"Precio: {product.find('span', {'class': 'a-offscreen'})}")
-                  print(f"Entrega: {product.find('span', {'class': 'a-color-base'})}")
                   
+                  imagen = product.img.get('src')
+                  description = product.find('span', {'class': 'a-size-base-plus a-color-base a-text-normal'})
+                  assessment = product.find('span', {'class': 'a-icon-alt'})
+                  price_whole = product.find('span', {'class': 'a-price-whole'})
+                  price_fraction = product.find('span', {'class': 'a-price-fraction'})
+                  delivery = DELIVERY_CHOICES["Gratis"] if randint(0, 1) == 0 else DELIVERY_CHOICES["Prime gratis"]
                   
-                  pass
-   
+                  Furniture(
+					imagen=imagen if imagen else "",
+					descripcion=description.get_text() if description else "",
+					valoracion=assessment.get_text() if assessment else "",
+					precio=float(str(price_whole.get_text()[:-1].replace(".", "")) + "." + str(price_fraction.get_text())) if price_whole and price_fraction else 0,
+					entrega=delivery,
+					categoria=Category.objects.filter(nombre=get_category(description.get_text())).first()
+			).save()
+      
             i += 1
             
       print("Data was saved succesfully!")
-            
+        
+        
+create_cattegories()
 populate_furniture(pages=10, BASE_URL=BASE_URL, URL_ROOT=URL_ROOT)

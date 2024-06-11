@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  {% load static %}
+  {% load custom_filters %}
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="furniture, home, interior, design" />
+  <meta name="description" content="Home site best furniture" />
+  <meta name="author" content="Dieveloper" />
+
+  <title>Furnishop</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+  
+  <style>
+		.hero_area {
+			background-image: url("{% static 'assets/hero-bg.jpg' %}");
+		}
+		
+		.hero_area::after{
+			background-image: url("{% static 'assets/hero-side-bg.png' %}");
+		}
+	
+  </style>
+  
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      {% block header %}{% endblock %}
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div class="play_btn">
+        <a href="">
+          <img src="{% static 'assets/play.png' %}" alt="">
+        </a>
+      </div>
+      <div class="number_box">
+        <div>
+          <ol class="carousel-indicators indicator-2">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2">03</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3">04</li>
+          </ol>
+        </div>
+      </div>
+      <div class="container">
+        	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="detail-box">
+								<h1>
+								The Latest
+								<span>
+									Furniture
+								</span>
+								</h1>
+								<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+								do eiusmod tempor incididunt ut labore
+								</p>
+								<div class="btn-box">
+									<a href="" class="btn-1">
+										Read More
+									</a>
+									<a href="{% url 'contact-us' %}" class="btn-2">
+										Contact us
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 img-container">
+						<div class="img-box">
+						<img src="{% static 'assets/slider-img.png' %}" alt="slider-image">
+						</div>
+					</div>
+				</div>
+				<!--Here is the carousel to implement-->
+			</div>
+         	</div>
+      </div>
+    </section>
+  </div>
+  
+  {% block content %}{% endblock %}  
+  
+  <section class="info_section layout_padding2">
+	<div class="container">
+	  <div class="info_logo">
+	    <h2>
+		EKIONA
+	    </h2>
+	  </div>
+	  <div class="row">
+  
+	    <div class="col-md-3">
+		<div class="info_contact">
+		  <h5>
+		    About Shop
+		  </h5>
+		  <div>
+		    <div class="img-box">
+			<img src="{% static 'assets/location-white.png' %}" width="18px" alt="">
+		    </div>
+		    <p>
+			Polígono Industrial Abendaño, Calle Sarobe 6, 20800 Zarautz
+		    </p>
+		  </div>
+		  <div>
+		    <div class="img-box">
+			<img src="{% static 'assets/telephone-white.png' %}" width="12px" alt="">
+		    </div>
+		    <p>
+			943 30 80 51
+		    </p>
+		  </div>
+		  <div>
+		    <div class="img-box">
+			<img src="{% static 'assets/envelope-white.png' %}" width="18px" alt="">
+		    </div>
+		    <p>
+			info@ekiona.com
+		    </p>
+		  </div>
+		</div>
+	    </div>
+	    <div class="col-md-3">
+		<div class="info_info">
+		  <h5>
+		    Informations
+		  </h5>
+		  <p>
+		    ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+		  </p>
+		</div>
+	    </div>
+  
+	    <div class="col-md-3">
+		<div class="info_insta">
+		  <h5>
+		    Instagram
+		  </h5>
+		  <div class="insta_container">
+		    <div>
+			<a href="">
+			  <div class="insta-box b-1">
+			    <img src="{% static 'assets/i-1.jpg' %}" alt="">
+			  </div>
+			</a>
+			<a href="">
+			  <div class="insta-box b-2">
+			    <img src="{% static 'assets/i-2.jpg' %}" alt="">
+			  </div>
+			</a>
+		    </div>
+  
+		    <div>
+			<a href="">
+			  <div class="insta-box b-3">
+			    <img src="{% static 'assets/i-3.jpg' %}" alt="">
+			  </div>
+			</a>
+			<a href="">
+			  <div class="insta-box b-4">
+			    <img src="{% static 'assets/i-4.jpg' %}" alt="">
+			  </div>
+			</a>
+		    </div>
+		    <div>
+			<a href="">
+			  <div class="insta-box b-3">
+			    <img src="{% static 'assets/i-5.jpg' %}" alt="">
+			  </div>
+			</a>
+			<a href="">
+			  <div class="insta-box b-4">
+			    <img src="{% static 'assets/i-6.jpg' %}" alt="">
+			  </div>
+			</a>
+		    </div>
+		  </div>
+		</div>
+	    </div>
+	    <div class="col-md-3">
+		<div class="info_form ">
+		  <h5>
+		    Newsletter
+		  </h5>
+		  <form action="" method="post">
+		    {% csrf_token %}
+		    <input type="email" placeholder="Enter your email">
+		    <input type="submit" value="Subscribe">
+		  </form>
+		  <div class="social_box">
+		    <a href="">
+			<img src="{% static 'assets/fb.png' %}" alt="">
+		    </a>
+		    <a href="">
+			<img src="{% static 'assets/twitter.png' %}" alt="">
+		    </a>
+		    <a href="">
+			<img src="{% static 'assets/linkedin.png' %}" alt="">
+		    </a>
+		    <a href="">
+			<img src="{% static 'assets/youtube.png' %}" alt="">
+		    </a>
+		  </div>
+		</div>
+	    </div>
+	  </div>
+	</div>
+    </section>
+  
+  <section class="container-fluid footer_section ">
+	
+	<div class="container">
+		<p>
+		  &copy; 2024 All Rights Reserved By
+		  <a href="https://html.design/">EKIONA Solar Lighting S.L.</a>
+		</p>
+	    </div>
+
+  </section>
+  
+</body>
+  
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        420: {
+          items: 2
+        },
+        1000: {
+          items: 5
+        }
+      }
+
+    });
+  </script>
+  <script>
+    var nav = $("#navbarSupportedContent");
+    var btn = $(".custom_menu-btn");
+    btn.click
+    btn.click(function (e) {
+
+      e.preventDefault();
+      nav.toggleClass("lg_nav-toggle");
+      document.querySelector(".custom_menu-btn").classList.toggle("menu_btn-style")
+    });
+  </script>
+  <script>
+    $('.carousel').on('slid.bs.carousel', function () {
+      $(".indicator-2 li").removeClass("active");
+      indicators = $(".carousel-indicators li.active").data("slide-to");
+      a = $(".indicator-2").find("[data-slide-to='" + indicators + "']").addClass("active");
+      console.log(indicators);
+
+    })
+  </script>
+
+</body>
+</body>
+
+</html>

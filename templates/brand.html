@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+
+{% block section %}
+<section class="brand_section">
+	<div class="container">
+	  <div class="heading_container">
+	    <h2>
+		Featured Brands
+	    </h2>
+	  </div>
+	  {% for furniture in furnitures %}
+		  <div class="brand_container layout_padding2">
+			  <div class="box">
+				  <a href="{{ furniture.imagen.url }}">
+					  <div class="new">
+						  <h5>
+						  New
+						  </h5>
+					  </div>
+					  <div class="img-box">
+						  <img src="{{ furniture.imagen }}" alt="">
+					  </div>
+					  <div class="detail-box">
+						  <h6 class="price">
+							  {{ furniture.precio }} &nbsp €
+						  </h6>
+						  <h6>
+							  {{ furniture.categoria }}
+						  </h6>
+					  </div>
+				  </a>
+			  </div>
+		  </div>
+	  {% endfor %}
+	  <a href="" class="brand-btn">
+	    See More
+	  </a>
+	</div>
+    </section>
+    
+{% endblock %}

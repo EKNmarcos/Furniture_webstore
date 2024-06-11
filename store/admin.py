@@ -11,7 +11,7 @@ class FurnitureAdmin(admin.ModelAdmin):
       
       def img(self, obj):
             
-            return format_html(f"<img src='{obj.imagen}' alt='Imagen de {obj.descripcion}>")
+            return format_html(f"<img src='{obj.imagen}' alt='Imagen de {obj.descripcion} width='200px'>")
       
       list_display = ['img', 'descripcion', 'valoracion', 'precio' ]
 
@@ -19,7 +19,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
       
       def user_name(self, obj):
             
-            return User.objects.filter(username_icontains=obj.user.username) # Error pending here
+            user = User.objects.filter(username=obj.user).first()
+            
+            return user.username
       
       list_display = ['user_name', 'price', 'plan', 'sign_up_date']
       
