@@ -1,5 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from .models import Furniture, Category
+from .error.error_handler import EmptyRequestException
+from .entities import Shopcart
+import json
 
 # Create your views here.
 def home(request):
@@ -34,7 +37,9 @@ def about_us(request):
 
 def shop(request):
       
-      return render(request, 'brand.html')
+      furnitures = Furniture.objects.all()
+      
+      return render(request, 'brand.html', {'furnitures': furnitures})
 
 
 def furniture(request, category=None):
@@ -84,5 +89,42 @@ def contact_us(request):
             print("Message ->" + message)
       
       return render(request, 'contact.html')
+
+def shopcart(request):
+      
+      cart = Shopcart(request)
+      
+      return render(request, 'shopcart.html', {'shopcart': cart.shopcart})
+
+def add_to_cart(request, id_producto):
+      
+      if request.method == "POST":
+            
+            data = json.loads(request.body)
+            
+            id_prod = data.get('id_producto', None)
+            
+            if id_prod is not None:
+                  
+                  try:
+                        
+                        shopcart = Shopcart(request)
+                        furniture = Furniture.objects.get(id=id_prod)
+                        shopcart.add(furniture)
+                        return HttpResponse(f"Thanks for adding the product {furniture.descripcion}")
+                  
+                  except:
+                        
+                        raise Exception("An error ocurred")    
+                  
+            else:
+                  
+                  raise EmptyRequestException(
+								sprocname="Views - add_to_cart()",
+								err_number=98,
+								err_description="The request has missing param 'id_producto'. "
+			)
+                  
+                  
 
 
