@@ -64,7 +64,7 @@ class Shopcart:
             if str(furniture.id) not in self.shopcart.keys():
                   
                  raise ObjectNotFoundException(
-                       					sprocname='Shopcart - remove()', 
+                       					sprocname='Shopcart - subtract()', 
                             				err_number=0, 
                             				err_description=f"Object not found in session {self.__class__.__name__}"
                             			    )

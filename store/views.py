@@ -2,11 +2,15 @@ from django.shortcuts import render, HttpResponse
 from .models import Furniture, Category
 from .error.error_handler import EmptyRequestException
 from .entities import Shopcart
+from django.contrib.auth.forms import UserCreationForm
 import json
+
 
 # Create your views here.
 def home(request):
-            
+      
+      
+      form = UserCreationForm() 
       selected_categories = ["Mesa", "Silla", "Cama", "Otros"]
       home_categories = Category.objects.all()
       furnitures = []
@@ -27,7 +31,7 @@ def home(request):
                         
       # print(furnitures)
             
-      return render(request, 'home.html', {'furnitures': furnitures, 'categories': home_categories})
+      return render(request, 'home.html', {'furnitures': furnitures, 'categories': home_categories, 'form': form})
 
 
 def about_us(request):
@@ -126,5 +130,3 @@ def add_to_cart(request, id_producto):
 			)
                   
                   
-
-

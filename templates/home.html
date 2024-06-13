@@ -5,6 +5,7 @@
 
 
 {% block header %}
+{% include 'auth/auth_form.html' %}
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg custom_nav-container">
     <a class="navbar-brand" href="#">
@@ -46,12 +47,18 @@
         </li>
       </ul>
       <div class="user_option">
-        <a href="">
-          <img src="{% static 'assets/user.png' %}" alt="" />
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal" style="margin-right: 5px;">
+          <svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(3 2)"><path d="m7.5.5c1.65685425 0 3 1.34314575 3 3v2c0 1.65685425-1.34314575 3-3 3s-3-1.34314575-3-3v-2c0-1.65685425 1.34314575-3 3-3z"/><path d="m14.5 2.5v4"/><path d="m16.5 4.5h-4"/><path d="m14.5 14.5v-.7281753c0-3.1864098-3.6862915-5.2718247-7-5.2718247s-7 2.0854149-7 5.2718247v.7281753c0 .5522847.44771525 1 1 1h12c.5522847 0 1-.4477153 1-1z"/></g></svg>
+          <span>
+            Register
+          </span>
+        </button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginModal">
+		<svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(3 3)"><path d="m6.5 10.5 3-3-3-3"/><path d="m5 3v9" transform="matrix(0 1 -1 0 12.5 2.5)"/><path d="m1.5 5.5v-3.0079176c0-1.10147263.89060277-1.99561512 1.99206673-1.99998427l7.95228497-.03160773c1.1045608-.00432011 2.0035361.8875515 2.0079175 1.99211231l.0398162 10.02918369c.0043323 1.1045608-.8875404 2.003535-1.9921012 2.0079309-.0026436 0-.0052873 0-.0079309 0h-7.9920533c-1.1045695 0-2-.8954305-2-2v-2.9897173"/></g></svg>
           <span>
             Login
           </span>
-        </a>
+        </button>
         <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
           <button
             class="btn my-2 my-sm-0 nav_search-btn"
@@ -78,3 +85,4 @@
 	{% block section %}{% endblock %}
 
 {% endblock %} 
+
